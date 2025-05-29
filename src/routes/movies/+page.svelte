@@ -3,9 +3,9 @@
   let { data } = $props();
 </script>
 
-<p><i>Daten und Bilder generiert mit ChatGPT und DALL-E</i></p>
+<p><i>Daten und Bilder generiert mit ChatGPT</i></p>
 <div>
-  <a href="/movies/create" class="btn btn-primary">Add New Movie</a>
+  <a href="/movies/create" class="btn btn-primary">Add new Book</a>
 </div>
 <div class="row mt-3">
   {#each data.movies as movie}
