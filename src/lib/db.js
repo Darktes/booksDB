@@ -63,7 +63,7 @@ async function getBook(id) {
 }
 */
 async function addBook(book) {
-  book.cover = "/images/placeholder.jpg"; // default cover image
+  book.book_cover = "/images/no_cover_available.png"; // default cover image
   book.readlist = false;
   try {
     const collection = db.collection("books");
@@ -134,3 +134,4 @@ async function deleteBook(id) {
 
 // export all functions so that they can be used in other files
 export { addBook, updateBook, getBooks, getBook, deleteBook };
+
