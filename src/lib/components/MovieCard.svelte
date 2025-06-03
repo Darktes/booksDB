@@ -1,26 +1,26 @@
 <script>
-  let { movie } = $props();
+  let { book } = $props();
 </script>
 
-<div class="movie-card">
+<div class="book-card">
   <div>
-    <img class="img-fluid" src={movie.poster} alt="" />
+    <img class="img-fluid" src={book.book_cover} alt="Cover of {book.book_name}" />
   </div>
   <div class="details">
     <div class="title">
-      <a href={"/movies/" + movie._id}>{movie.title}</a>
+      <a href={"/books/" + book._id}>{book.book_name}</a>
     </div>
     <div>
-      Jahr: {movie.year}
+      Autor: {book.book_author}
     </div>
     <div>
-      Dauer: {movie.length}
+      Genre: {book.book_genre}
     </div>
   </div>
 </div>
 
 <style>
-  .movie-card {
+  .book-card {
     border: 1px solid #555;
     height: 100%;
     background-color: #444;
