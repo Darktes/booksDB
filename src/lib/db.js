@@ -1,3 +1,5 @@
+// TODO: Changed file
+
 import { MongoClient, ObjectId } from "mongodb"; // See https://www.mongodb.com/docs/drivers/node/current/quick-start/
 import { DB_URI } from "$env/static/private";
 
@@ -64,7 +66,6 @@ async function getBook(id) {
 */
 async function addBook(book) {
   book.book_cover = "/images/no_cover_available.png"; // default cover image
-  book.readlist = false;
   try {
     const collection = db.collection("books");
     const result = await collection.insertOne(book);
@@ -133,5 +134,38 @@ async function deleteBook(id) {
 }
 
 // export all functions so that they can be used in other files
-export { addBook, updateBook, getBooks, getBook, deleteBook };
 
+
+async function getLists() {
+  const collection = db.collection("lists");
+  const lists = await collection.find({}).toArray();
+  lists.forEach(list => {
+    list._id = list._id.toString();
+  });
+  return lists;
+}
+
+async function addList(name, books = []) {
+  const collection = db.collection("lists");
+  const result = await collection.insertOne({ name, books });
+  return result.insertedId.toString();
+}
+
+async function getList(id) {
+  const collection = db.collection("lists");
+  const list = await collection.findOne({ _id: new ObjectId(id) });
+  if (list) list._id = list._id.toString();
+  return list;
+}
+async function deleteList(id) {
+  try {
+    const collection = db.collection("lists");
+    const result = await collection.deleteOne({ _id: new ObjectId(id) });
+    return result.deletedCount === 1;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
+
+export default { getLists, addList, getList, deleteList, addBook, updateBook, getBooks, getBook, deleteBook };

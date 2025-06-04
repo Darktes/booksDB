@@ -7,7 +7,7 @@
   <section class="hero">
     <h1>BookBlaze</h1>
     <p class="subtitle">Ignite Your Reading Journey</p>
-    <p>Welcome to BookBlaze, where every page sparks a new adventure. Whether you’re tracking your next read or curating genre-based book lists, BookBlaze makes it effortless to organize—and celebrate—your personal library.</p>
+    <p>Welcome to BookBlaze, where every page sparks a new adventure. Whether you're tracking your next read or curating genre-based book lists, BookBlaze makes it effortless to organize—and celebrate—your personal library.</p>
     <a class="cta-button" href="/books">Save Book</a>
   </section>
 

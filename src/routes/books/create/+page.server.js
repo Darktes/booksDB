@@ -1,4 +1,6 @@
-import { addBook } from "$lib/db.js";
+// TODO: Changed file
+
+import db from '$lib/db.js';
 
 export const actions = {
   default: async ({ request }) => {
@@ -8,11 +10,12 @@ export const actions = {
     const author = data.get('author');
     const genre = data.get('genre');
 
-    await addBook({
+    await db.addBook({
       book_name: name,
       book_author: author,
       book_genre: genre
     });
+    
     return { success: true };
   }
 };

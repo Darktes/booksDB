@@ -1,6 +1,9 @@
-import { getBooks } from "$lib/db.js";
+// TODO: Changed file
+
+import db from "$lib/db";
 
 export async function load() {
-  const books = await getBooks();
-  return { books };
+  return {
+    books: await db.getBooks()
+  };
 }

@@ -1,4 +1,7 @@
 body {
-    background-color: whitesmoke;
+    background-color:white;
     color: black;
+}
+.my-navbar {
+  background-color: orange !important;
 }

@@ -4,9 +4,8 @@
 </script>
 
 <nav
-  class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
-  data-bs-theme="dark"
->
+  class="navbar navbar-expand-lg my-navbar"
+  data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Bookblaze</a>
     <button
@@ -24,8 +23,11 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/books"
-            >Books</a
-          >
+            >Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/lists"
+            >My Lists</a>
         </li>
       </ul>
     </div>
