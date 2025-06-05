@@ -24,7 +24,7 @@ export const actions = {
       book_genre: genre
     });
     
-    // Instead of redirecting, return a success message.
+    
     return { success: true, message: "Book updated successfully." };
   }
 };
