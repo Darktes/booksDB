@@ -1,5 +1,5 @@
 import db from "$lib/db.js";
-import { redirect } from "@sveltejs/kit";
+import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
   const book = await db.getBook(params.book_id);
@@ -24,6 +24,7 @@ export const actions = {
       book_genre: genre
     });
     
-    throw redirect(303, "/books");
+    // Instead of redirecting, return a success message.
+    return { success: true, message: "Book updated successfully." };
   }
 };

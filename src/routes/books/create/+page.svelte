@@ -1,6 +1,6 @@
 <script>
   import { enhance } from '$app/forms';
-  export let form;
+  let { form } = $props();
 </script>
 
 <a href="/books" class="btn btn-secondary mb-3">Back</a>

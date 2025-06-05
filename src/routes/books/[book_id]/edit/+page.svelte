@@ -1,8 +1,6 @@
 <script>
-  let { data } = $props();
+  let { data, form } = $props();
 </script>
-
-
 
 <h1>Edit Book</h1>
 
@@ -42,8 +40,11 @@
   </div>
   <input type="hidden" name="id" value={data.book._id} />
   <button type="submit" class="btn btn-primary">Save Changes</button>
-
   <a href={`/books/${data.book._id}`} class="btn btn-secondary ms-2">Cancel</a>
 </form>
+
+{#if form?.success}
+  <p class="alert alert-success mt-3">Book updated</p>
+{/if}
 
 

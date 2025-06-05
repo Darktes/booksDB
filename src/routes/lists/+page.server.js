@@ -1,4 +1,4 @@
-// TODO: Changed file
+
 
 import db from "$lib/db";
 
@@ -15,17 +15,12 @@ export const actions = {
     const name = data.get("list-name");
     const bookIds = data.getAll("books");
 
-    // resolve promise after getting book object for each book id
+    
     const books = await Promise.all(
       bookIds.map(id => db.getBook(id))
     );
 
-    // alternatively here is the for loop
-    // const books = [];
-    // for (const id of bookIds) {
-    //   const book = await db.getBook(id);
-    //   books.push(book);
-    // }
+    
 
     await db.addList(name, books);
     return { success: true };

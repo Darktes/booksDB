@@ -29,23 +29,23 @@
 </div>
 
 <style>
-  /* Make the card more round and add transition; renamed to .big-card for clarity */
+  
   .big-card {
     width: 100%;
     border-radius: 2rem;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Optionally, you can set a min-height if needed */
+    
     min-height: 450px;
   }
 
-  /* Hover effect to bring card forward */
+  
   .big-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 
-  /* Runes mode styling with rounder corners and black borders */
+  
   .runes-mode {
     background: #2e2b2b;
     color: #f5deb3;
@@ -65,10 +65,10 @@
     text-shadow: 1px 1px 2px #000;
   }
 
-  /* Increase the image height to make the card bigger */
+  
   .card-img-top {
     width: 100%;
-    height: 500px; /* Increased height for a bigger card */
+    height: 500px; 
     object-fit: cover;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;

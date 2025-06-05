@@ -18,7 +18,7 @@
     <p><strong>Author:</strong> {data.book.book_author}</p>
     <p><strong>Genre:</strong> {data.book.book_genre}</p>
 
-    <!-- Hard-coded description and published date -->
+    
     <p>
       <strong>Description:</strong>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse

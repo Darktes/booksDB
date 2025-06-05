@@ -13,7 +13,7 @@ export const actions = {
     const name = formData.get("name");
     const bookIds = formData.getAll("books");
     
-    // Update the database record. Make sure you have a function updateList in your db.js.
+    
     await db.updateList({ _id: id, name, books: bookIds });
     
     return { success: true, message: "List updated" };

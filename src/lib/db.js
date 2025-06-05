@@ -1,123 +1,95 @@
-// TODO: Changed file
 
-import { MongoClient, ObjectId } from "mongodb"; // See https://www.mongodb.com/docs/drivers/node/current/quick-start/
+
+import { MongoClient, ObjectId } from "mongodb"; 
 import { DB_URI } from "$env/static/private";
 
 const client = new MongoClient(DB_URI);
 
 await client.connect();
-const db = client.db("BookblazeDB"); // select database
-
-//////////////////////////////////////////
-// Books
-//////////////////////////////////////////
-
-// Get all books
+const db = client.db("BookblazeDB"); 
 async function getBooks() {
   let books = [];
   try {
     const collection = db.collection("books");
 
-    // You can specify a query/filter here
-    // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
+    
     const query = {};
 
-    // Get all objects that match the query
+    
     books = await collection.find(query).toArray();
     books.forEach((book) => {
-      book._id = book._id.toString(); // convert ObjectId to String
+      book._id = book._id.toString(); 
     });
   } catch (error) {
     console.log(error);
-    // TODO: errorhandling
+    
   }
   return books;
 }
 
-// Get book by id
+
 async function getBook(id) {
   let book = null;
   try {
     const collection = db.collection("books");
-    const query = { _id: new ObjectId(id) }; // filter by id
+    const query = { _id: new ObjectId(id) }; 
     book = await collection.findOne(query);
 
     if (!book) {
       console.log("No book with id " + id);
-      // TODO: errorhandling
+      
     } else {
-      book._id = book._id.toString(); // convert ObjectId to String
+      book._id = book._id.toString(); 
     }
   } catch (error) {
-    // TODO: errorhandling
+    
     console.log(error.message);
   }
   return book;
 }
 
-// create book
-// Example book object:
-/*
-{
-  book_name: "To Kill a Mockingbird",
-  book_author: "Harper Lee",
-  book_genre: "Fiction"
-}
-*/
+
 async function addBook(book) {
-  book.book_cover = "/images/no_cover_available.png"; // default cover image
+  book.book_cover = "/images/no_cover_available.png"; 
   try {
     const collection = db.collection("books");
     const result = await collection.insertOne(book);
-    return result.insertedId.toString(); // convert ObjectId to String
+    return result.insertedId.toString(); 
   } catch (error) {
-    // TODO: errorhandling
+    
     console.log(error.message);
   }
   return null;
 }
 
-// update book
-// Example book object:
-/*
-{
-  _id: "6630e72c95e12055f661ff13",
-  book_name: "To Kill a Mockingbird",
-  book_author: "Harper Lee",
-  book_genre: "Fiction",
-  cover: "/images/Mockingbird.png",
-  readlist: true
-}
-*/
-// returns: id of the updated book or null, if book could not be updated
+
 async function updateBook(book) {
   try {
     let id = book._id;
-    delete book._id; // delete the _id from the object, because the _id cannot be updated
+    delete book._id; 
     const collection = db.collection("books");
     const query = { _id: new ObjectId(id) }; // filter by id
     const result = await collection.updateOne(query, { $set: book });
 
     if (result.matchedCount === 0) {
       console.log("No book with id " + id);
-      // TODO: errorhandling
+      
     } else {
       console.log("Book with id " + id + " has been updated.");
       return id;
     }
   } catch (error) {
-    // TODO: errorhandling
+    
     console.log(error.message);
   }
   return null;
 }
 
-// delete book by id
-// returns: id of the deleted book or null, if book could not be deleted
+
 async function deleteBook(id) {
   try {
     const collection = db.collection("books");
-    const query = { _id: new ObjectId(id) }; // filter by id
+    const query = { _id: new ObjectId(id) }; 
     const result = await collection.deleteOne(query);
 
     if (result.deletedCount === 0) {
@@ -127,13 +99,13 @@ async function deleteBook(id) {
       return id;
     }
   } catch (error) {
-    // TODO: errorhandling
+    
     console.log(error.message);
   }
   return null;
 }
 
-// export all functions so that they can be used in other files
+
 
 
 async function getLists() {
@@ -170,7 +142,7 @@ async function deleteList(id) {
 async function updateList(list) {
   try {
     const collection = db.collection("lists");
-    // Use updateOne with the list _id and update the fields.
+    
     const result = await collection.updateOne(
       { _id: new ObjectId(list._id) },
       { $set: { name: list.name, books: list.books } }

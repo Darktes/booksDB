@@ -1,4 +1,4 @@
-<!-- // TODO: Changed file -->
+
 <script>
   let { form, data } = $props();
 </script>
@@ -25,7 +25,9 @@
       size="10"
     >
       {#each data.books as book}
-        <option value={book._id}>{book.book_name}</option>
+        <option value={book._id}>
+          {book.book_name}  -  {book.book_genre}
+        </option>
       {/each}
     </select>
     <small class="form-text text-muted">To select multiple books hold CTRL</small>

@@ -1,4 +1,4 @@
-<!-- TODO: Changed file -->
+
 <script>
   import BookCard from "$lib/components/BookCard.svelte";
   let { data } = $props();

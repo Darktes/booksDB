@@ -3,7 +3,7 @@
 </script>
 
 <main class="container">
-  <!-- Hero Section -->
+  
   <section class="hero">
     <h1>BookBlaze</h1>
     <p class="subtitle">Ignite Your Reading Journey</p>
@@ -11,7 +11,7 @@
     <a class="cta-button" href="/books">Go to Books</a>
   </section>
 
-  <!-- Features Section -->
+  
   <section class="features">
     <h2>Discover, Organize, Ignite</h2>
 
@@ -31,7 +31,7 @@
     </div>
   </section>
 
-  <!-- Why BookBlaze Section -->
+  
   <section class="why">
     <h2>Why BookBlaze?</h2>
     <ul>
@@ -47,7 +47,7 @@
     </ul>
   </section>
 
-  <!-- Footer / Tagline -->
+  
   <section class="footer-tagline">
     <p><em>Your books. Your lists. Your blaze of inspiration.</em></p>
   </section>
@@ -65,19 +65,19 @@
   h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    /* Left-aligned by default */
+    
   }
 
   .subtitle {
     font-size: 1.25rem;
     color: #555;
     margin-bottom: 1.5rem;
-    /* Left-aligned by default */
+   
   }
 
   .hero p {
     margin-bottom: 1.25rem;
-    /* Left-aligned by default */
+    
   }
 
   .cta-button {
@@ -108,7 +108,7 @@
     margin-bottom: 1rem;
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5rem;
-    /* Left-aligned by default */
+    
   }
 
   .feature {
@@ -118,7 +118,7 @@
   .feature h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
-    /* Left-aligned by default */
+    
   }
 
   .why ul {
@@ -134,6 +134,6 @@
     margin-top: 3rem;
     font-style: italic;
     color: #666;
-    /* Left-aligned by default */
+    
   }
 </style>
