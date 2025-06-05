@@ -167,5 +167,19 @@ async function deleteList(id) {
     return false;
   }
 }
+async function updateList(list) {
+  try {
+    const collection = db.collection("lists");
+    // Use updateOne with the list _id and update the fields.
+    const result = await collection.updateOne(
+      { _id: new ObjectId(list._id) },
+      { $set: { name: list.name, books: list.books } }
+    );
+    return result.modifiedCount === 1;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
 
-export default { getLists, addList, getList, deleteList, addBook, updateBook, getBooks, getBook, deleteBook };
+export default { getLists, addList, getList, deleteList, updateList, addBook, updateBook, getBooks, getBook, deleteBook };

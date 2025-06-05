@@ -3,14 +3,21 @@
   let { form, data } = $props();
 </script>
 
+<style>
+  label.form-label {
+    font-weight: bold;
+  }
+</style>
+
 <form method="POST" action="?/create">
   <div class="mb-3">
-    <label for="" class="form-label">List Name</label>
-    <input name="list-name" class="form-control" type="text" required />
+    <label class="form-label" for="list-name-input">List Name</label>
+    <input id="list-name-input" name="list-name" class="form-control" type="text" required />
   </div>
   <div class="mb-3">
-    <label for="" class="form-label">Books</label>
+    <label class="form-label" for="books-select">Books</label>
     <select
+      id="books-select"
       name="books"
       class="form-select"
       multiple
@@ -21,6 +28,7 @@
         <option value={book._id}>{book.book_name}</option>
       {/each}
     </select>
+    <small class="form-text text-muted">To select multiple books hold CTRL</small>
   </div>
   <div>
     <button type="submit" class="btn btn-secondary w-100">Add new list</button>
@@ -40,7 +48,7 @@
           <br>
           <div class="mt-auto">
             <a href={`/lists/${list._id}`} class="btn btn-primary btn-sm me-2">
-              View / Edit
+              View
             </a>
             <form method="POST" action="?/delete" class="d-inline">
               <input type="hidden" name="id" value={list._id} />

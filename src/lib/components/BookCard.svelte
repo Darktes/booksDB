@@ -1,32 +1,20 @@
-<!-- src/lib/components/BookCard.svelte -->
 <script>
-  export let book;
+  let { book } = $props();
 </script>
 
-<!--
-  We use a Bootstrap “card” with:
-    • bg-secondary → grey background
-    • text-white   → white text
-    • h-100        → forces the card to fill its parent’s height (if you’re in a Bootstrap grid)
--->
-<div class="card bg-secondary text-black h-100">
+<div class="card runes-mode big-card">
   {#if book.book_cover}
-    <!--
-      .card-img-top + .img-fluid makes the image scale to 100% of the card’s width,
-      preserving its aspect ratio. 
-    -->
-    <img
-      src={book.book_cover}
-      class="card-img-top img-fluid"
-      alt="Cover of {book.book_name}" />
+    <a href={"/books/" + book._id}>
+      <img
+        src={book.book_cover}
+        class="card-img-top img-fluid"
+        alt="Cover of {book.book_name}" />
+    </a>
   {/if}
 
   <div class="card-body">
-    <!--
-      card-title inside a card-body; link stays white because of text-white class.
-    -->
     <h5 class="card-title">
-      <a href={"/books/" + book._id} class="text-white">
+      <a href={"/books/" + book._id} class="text-runes">
         {book.book_name}
       </a>
     </h5>
@@ -41,10 +29,55 @@
 </div>
 
 <style>
-  /* Ensure the <img> never overflows the card’s width (this is redundant with .img-fluid,
-     but you can leave it for safety). */
-  .card-img-top {
-    max-width: 100%;
-    height: auto;
+  /* Make the card more round and add transition; renamed to .big-card for clarity */
+  .big-card {
+    width: 100%;
+    border-radius: 2rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Optionally, you can set a min-height if needed */
+    min-height: 450px;
   }
+
+  /* Hover effect to bring card forward */
+  .big-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Runes mode styling with rounder corners and black borders */
+  .runes-mode {
+    background: #2e2b2b;
+    color: #f5deb3;
+    border: 2px solid #000000;
+    border-radius: 2rem;
+    background-size: cover;
+    background-blend-mode: multiply;
+    font-family: Arial, sans-serif;
+  }
+
+  .runes-mode .card-body {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .text-runes {
+    color: #f5deb3;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  /* Increase the image height to make the card bigger */
+  .card-img-top {
+    width: 100%;
+    height: 500px; /* Increased height for a bigger card */
+    object-fit: cover;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  .card-title a {
+  text-decoration: none !important;
+  font-weight: bold;
+}
 </style>
+
+

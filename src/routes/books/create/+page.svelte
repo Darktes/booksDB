@@ -3,7 +3,7 @@
   export let form;
 </script>
 
-<a href="/books">Back</a>
+<a href="/books" class="btn btn-secondary mb-3">Back</a>
 <h1>Add Book</h1>
 <form method="POST" use:enhance>
   <div class="mb-3">
